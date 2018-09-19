@@ -1,4 +1,4 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::RelationshipsController < ApplicationController
 
   def index
     @relationships = Relationship.all
