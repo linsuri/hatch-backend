@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mentee_id: 1
+  mentor_id: 1
+
+two:
+  mentee_id: 1
+  mentor_id: 1
