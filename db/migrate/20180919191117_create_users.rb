@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :linkedin
       t.string :github
       t.string :personal_website
+      t.boolean :mentor_status
       t.boolean :will_buy_coffee
       t.references :location, foreign_key: true
 

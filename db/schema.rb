@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_09_19_191117) do
     t.string "linkedin"
     t.string "github"
     t.string "personal_website"
+    t.boolean "mentor_status"
     t.boolean "will_buy_coffee"
     t.bigint "location_id"
     t.datetime "created_at", null: false

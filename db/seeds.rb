@@ -22,6 +22,7 @@ amysantiago = User.create(
   linkedin: 'https://linkedin.com/en/amysantiago',
   github: '',
   personal_website: '',
+  mentor_status: false,
   will_buy_coffee: true,
   location_id: 1,
   )
@@ -37,6 +38,7 @@ raymondholt = User.create(
   linkedin: 'https://linkedin.com/en/raymondholt',
   github: '',
   personal_website: '',
+  mentor_status: true,
   will_buy_coffee: false,
   location_id: 1,
 )
