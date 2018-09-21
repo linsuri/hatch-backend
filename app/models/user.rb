@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  # validates :name, {presence: true, uniqueness: true}
+  has_secure_password
+  validates :email_address, {presence: true, uniqueness: true}
 
   belongs_to :location
   has_many :active_relationships, class_name:  "Relationship",

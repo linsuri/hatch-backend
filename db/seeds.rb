@@ -12,9 +12,10 @@ newyork = Location.create({
   })
 
 amysantiago = User.create(
+  email_address: 'amy.santiago@b99.org',
+  password_digest: '',
   first_name: 'Amy',
   last_name: 'Santiago',
-  email_address: 'amy.santiago@b99.org',
   profile_pic: '',
   job_title: 'detective',
   expertise: 'homicide,robberies,terrorism,management',
@@ -28,9 +29,10 @@ amysantiago = User.create(
   )
 
 raymondholt = User.create(
+  email_address: 'raymond.holt@b99.org',
+  password_digest: '',
   first_name: 'Raymond',
   last_name: 'Holt',
-  email_address: 'raymond.holt@b99.org',
   profile_pic: '',
   job_title: 'captain',
   expertise: 'management',
