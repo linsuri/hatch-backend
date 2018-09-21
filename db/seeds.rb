@@ -13,7 +13,7 @@ newyork = Location.create({
 
 amysantiago = User.create(
   email_address: 'amy.santiago@b99.org',
-  password_digest: '',
+  password_digest: 'hi',
   first_name: 'Amy',
   last_name: 'Santiago',
   profile_pic: '',
@@ -30,7 +30,7 @@ amysantiago = User.create(
 
 raymondholt = User.create(
   email_address: 'raymond.holt@b99.org',
-  password_digest: '',
+  password_digest: 'hi',
   first_name: 'Raymond',
   last_name: 'Holt',
   profile_pic: '',

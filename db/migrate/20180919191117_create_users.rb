@@ -5,16 +5,16 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :password_digest
       t.string :first_name
       t.string :last_name
-      t.string :profile_pic
-      t.string :job_title
-      t.string :expertise
-      t.string :bio
-      t.string :linkedin
-      t.string :github
-      t.string :personal_website
-      t.boolean :mentor_status
-      t.boolean :will_buy_coffee
-      t.references :location, foreign_key: true
+      t.string :profile_pic, :default => ''
+      t.string :job_title, :default => ''
+      t.string :expertise, :default => ''
+      t.string :bio, :default => ''
+      t.string :linkedin, :default => ''
+      t.string :github, :default => ''
+      t.string :personal_website, :default => ''
+      t.boolean :mentor_status, :default => false
+      t.boolean :will_buy_coffee, :default => false
+      t.references :location, foreign_key: true, :default => 1
 
       t.timestamps
     end

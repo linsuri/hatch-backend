@@ -39,16 +39,16 @@ ActiveRecord::Schema.define(version: 2018_09_19_191117) do
     t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
-    t.string "profile_pic"
-    t.string "job_title"
-    t.string "expertise"
-    t.string "bio"
-    t.string "linkedin"
-    t.string "github"
-    t.string "personal_website"
-    t.boolean "mentor_status"
-    t.boolean "will_buy_coffee"
-    t.bigint "location_id"
+    t.string "profile_pic", default: ""
+    t.string "job_title", default: ""
+    t.string "expertise", default: ""
+    t.string "bio", default: ""
+    t.string "linkedin", default: ""
+    t.string "github", default: ""
+    t.string "personal_website", default: ""
+    t.boolean "mentor_status", default: false
+    t.boolean "will_buy_coffee", default: false
+    t.bigint "location_id", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["location_id"], name: "index_users_on_location_id"

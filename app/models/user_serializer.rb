@@ -9,5 +9,5 @@ class UserSerializer < ActiveModel::Serializer
   has_many :mentors, through: :active_relationships
   has_many :mentees, through: :passive_relationships
 
-  attributes :id, :first_name, :last_name, :email_address, :profile_pic, :job_title, :expertise, :bio, :linkedin, :github, :personal_website, :mentor_status, :will_buy_coffee
+  attributes :id, :email_address, :first_name, :last_name, :profile_pic, :job_title, :expertise, :bio, :linkedin, :github, :personal_website, :mentor_status, :will_buy_coffee
 end
