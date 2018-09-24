@@ -45,8 +45,31 @@ raymondholt = User.create(
   location_id: 1,
 )
 
+jakeperalta = User.create(
+  email_address: 'jake.peralta@b99.org',
+  password_digest: 'hi',
+  first_name: 'Jake',
+  last_name: 'Peralta',
+  profile_pic: '',
+  job_title: 'detective',
+  expertise: '',
+  bio: 'Cool cool cool. Coolcoolcoolcool Cooolcool, cool coolcool Coolcoolcoolcool.',
+  linkedin: 'https://linkedin.com/en/jakeperalta',
+  github: '',
+  personal_website: '',
+  mentor_status: false,
+  will_buy_coffee: false,
+  location_id: 1,
+)
+
 Relationship.create(
   mentee_id: 1,
   mentor_id: 2,
+  accepted: true,
+)
+
+Relationship.create(
+  mentee_id: 3,
+  mentor_id: 1,
   accepted: true,
 )
