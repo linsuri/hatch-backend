@@ -6,6 +6,11 @@ Rails.application.routes.draw do
       # resources :relationships, only: [:index]
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
+
+      resources :conversations, only: [:index, :create]
+      resources :messages, only: [:create]
+
+      mount ActionCable.server => '/cable'
     end
   end
 end

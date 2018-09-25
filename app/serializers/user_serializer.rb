@@ -8,6 +8,9 @@ class UserSerializer < ActiveModel::Serializer
   #                               dependent:   :destroy
   has_many :mentors, through: :active_relationships
   has_many :mentees, through: :passive_relationships
+  
+  has_many :messages
+  has_many :conversations, through: :messages
 
   attributes :id, :email_address, :first_name, :last_name, :profile_pic, :job_title, :expertise, :bio, :linkedin, :github, :personal_website, :mentor_status, :will_buy_coffee
 end

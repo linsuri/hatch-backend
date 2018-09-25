@@ -73,3 +73,13 @@ Relationship.create(
   mentor_id: 1,
   accepted: true,
 )
+
+Conversation.create(
+  title: 'Hello',
+)
+
+Message.create(
+  text: 'First',
+  conversation_id: 1,
+  user_id: 4,
+)
