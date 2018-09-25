@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
 
-      resources :conversations, only: [:index, :create]
+      resources :relationships, only: [:index, :create]
       resources :messages, only: [:create]
 
       mount ActionCable.server => '/cable'

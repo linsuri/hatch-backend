@@ -74,12 +74,8 @@ Relationship.create(
   accepted: true,
 )
 
-Conversation.create(
-  title: 'Hello',
-)
-
-Message.create(
-  text: 'First',
-  conversation_id: 1,
-  user_id: 4,
-)
+# Message.create(
+#   text: 'Lin to Amy',
+#   relationship_id: 3,
+#   user_id: 4,
+# )

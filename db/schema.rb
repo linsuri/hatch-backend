@@ -10,16 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_25_140718) do
+ActiveRecord::Schema.define(version: 2018_09_25_193726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "conversations", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "locations", force: :cascade do |t|
     t.string "city"
@@ -31,18 +25,18 @@ ActiveRecord::Schema.define(version: 2018_09_25_140718) do
 
   create_table "messages", force: :cascade do |t|
     t.string "text"
-    t.bigint "conversation_id"
+    t.bigint "relationship_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["relationship_id"], name: "index_messages_on_relationship_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
     t.integer "mentee_id"
     t.integer "mentor_id"
-    t.boolean "accepted"
+    t.boolean "accepted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mentee_id", "mentor_id"], name: "index_relationships_on_mentee_id_and_mentor_id", unique: true
@@ -70,7 +64,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_140718) do
     t.index ["location_id"], name: "index_users_on_location_id"
   end
 
-  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "relationships"
   add_foreign_key "messages", "users"
   add_foreign_key "users", "locations"
 end

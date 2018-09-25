@@ -3,7 +3,7 @@ class CreateRelationships < ActiveRecord::Migration[5.2]
     create_table :relationships do |t|
       t.integer :mentee_id
       t.integer :mentor_id
-      t.boolean :accepted
+      t.boolean :accepted, :default => false
 
       t.timestamps
     end
