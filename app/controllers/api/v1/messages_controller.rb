@@ -13,7 +13,7 @@ class Api::V1::MessagesController < ApplicationController
       serialized_data = ActiveModelSerializers::Adapter::Json.new(
         MessageSerializer.new(message)
       ).serializable_hash
-      MessagesChannel.broadcast_to relationship, serialized_data
+      ActionCable.server.broadcast 'messages_channel', serialized_data
       head :ok
     end
   end
