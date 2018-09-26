@@ -12,5 +12,5 @@ class UserSerializer < ActiveModel::Serializer
   has_many :messages, through: :active_relationships
   has_many :messages, through: :passive_relationships
 
-  attributes :id, :email_address, :mentor_status, :first_name, :last_name, :profile_pic, :job_title, :expertise, :bio, :linkedin, :github, :personal_website,  :will_buy_coffee
+  attributes :id, :email_address, :mentor_status, :first_name, :last_name, :profile_pic, :job_title, :expertise, :bio, :linkedin, :github, :personal_website, :will_buy_coffee
 end
