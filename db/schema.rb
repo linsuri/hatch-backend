@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_193726) do
     t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
+    t.boolean "mentor_status", default: false
     t.string "profile_pic", default: ""
     t.string "job_title", default: ""
     t.string "expertise", default: ""
@@ -56,7 +57,6 @@ ActiveRecord::Schema.define(version: 2018_09_25_193726) do
     t.string "linkedin", default: ""
     t.string "github", default: ""
     t.string "personal_website", default: ""
-    t.boolean "mentor_status", default: false
     t.boolean "will_buy_coffee", default: false
     t.bigint "location_id", default: 1
     t.datetime "created_at", null: false
