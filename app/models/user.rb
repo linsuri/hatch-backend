@@ -7,10 +7,10 @@ class User < ApplicationRecord
 
   belongs_to :location
 
-  has_many :active_relationships, class_name:  "Relationship",
+  has_many :active_relationships, -> { where(accepted: true) }, class_name:  "Relationship",
                                 foreign_key: "mentee_id",
                                 dependent:   :destroy
-  has_many :passive_relationships, class_name:  "Relationship",
+  has_many :passive_relationships, -> { where(accepted: true) }, class_name:  "Relationship",
                                 foreign_key: "mentor_id",
                                 dependent:   :destroy
   has_many :mentors, through: :active_relationships
