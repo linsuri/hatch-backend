@@ -18,4 +18,13 @@ class User < ApplicationRecord
 
   has_many :messages, through: :active_relationships
   has_many :messages, through: :passive_relationships
+
+  has_many :received_notifications, class_name:  "Notification",
+                                foreign_key: "recipient_id",
+                                dependent:   :destroy
+  has_many :sent_notifications, class_name:  "Notification",
+                                foreign_key: "sender_id",
+                                dependent:   :destroy
+  # has_many :recipients, through: :received_notifications
+  # has_many :senders, through: :sent_notifications
 end

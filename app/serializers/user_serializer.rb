@@ -12,5 +12,14 @@ class UserSerializer < ActiveModel::Serializer
   has_many :messages, through: :active_relationships
   has_many :messages, through: :passive_relationships
 
+  has_many :received_notifications, class_name:  "Notification",
+                                foreign_key: "recipient_id",
+                                dependent:   :destroy
+  has_many :sent_notifications, class_name:  "Notification",
+                                foreign_key: "sender_id",
+                                dependent:   :destroy
+  # has_many :recipients, through: :received_notifications
+  # has_many :senders, through: :sent_notifications
+
   attributes :id, :email_address, :mentor_status, :first_name, :last_name, :profile_pic, :job_title, :expertise, :bio, :linkedin, :github, :personal_website, :will_buy_coffee
 end

@@ -23,7 +23,7 @@ amysantiago = User.create(
   linkedin: 'https://linkedin.com/en/amysantiago',
   github: '',
   personal_website: '',
-  mentor_status: false,
+  mentor_status: true,
   will_buy_coffee: true,
   location_id: 1,
   )
@@ -57,22 +57,22 @@ jakeperalta = User.create(
   linkedin: 'https://linkedin.com/en/jakeperalta',
   github: '',
   personal_website: '',
-  mentor_status: false,
+  mentor_status: true,
   will_buy_coffee: false,
   location_id: 1,
 )
 
-Relationship.create(
-  mentee_id: 1,
-  mentor_id: 2,
-  accepted: true,
-)
-
-Relationship.create(
-  mentee_id: 3,
-  mentor_id: 1,
-  accepted: true,
-)
+# Relationship.create(
+#   mentee_id: 1,
+#   mentor_id: 2,
+#   accepted: true,
+# )
+#
+# Relationship.create(
+#   mentee_id: 3,
+#   mentor_id: 1,
+#   accepted: true,
+# )
 
 # Message.create(
 #   text: 'Lin to Amy',

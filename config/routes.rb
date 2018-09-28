@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
       resources :relationships, only: [:index, :create]
       resources :messages, only: [:create]
+      resources :notifications, only: [:create]
 
       mount ActionCable.server => '/cable'
     end
