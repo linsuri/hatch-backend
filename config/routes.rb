@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :notifications, only: [:create]
 
       patch "/relationships", to: "relationships#update"
+      delete "/relationships", to: "relationships#destroy"
       mount ActionCable.server => '/cable'
     end
   end

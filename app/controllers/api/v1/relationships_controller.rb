@@ -1,6 +1,6 @@
 class Api::V1::RelationshipsController < ApplicationController
 
-  skip_before_action :authorized, only: [:index, :create, :update]
+  skip_before_action :authorized, only: [:index, :create, :update, :destroy]
 
   def index
     @relationships = Relationship.all
@@ -27,7 +27,8 @@ class Api::V1::RelationshipsController < ApplicationController
     @relationship = Relationship.find_by(mentor_id: relationship_params[:mentor_id], mentee_id: relationship_params[:mentee_id])
     @relationship.update(accepted: relationship_params[:accepted])
     if @relationship.valid?
-      @notification = Notification.find_by(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentor_id], text: "mentorship request").destroy
+      @notification = Notification.find_by(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentor_id], text: "mentorship request")
+      @notification.destroy
       render json: { relationship: RelationshipSerializer.update(@relationship) }, status: :patched
     else
       render json: { error: 'failed to update relationship' }, status: :not_acceptable
@@ -35,7 +36,11 @@ class Api::V1::RelationshipsController < ApplicationController
   end
 
   def destroy
-
+    @relationship = Relationship.find_by(mentor_id: relationship_params[:mentor_id], mentee_id: relationship_params[:mentee_id])
+    byebug
+    @notification = Notification.find_by(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentor_id], text: "mentorship request")
+    @relationship.destroy
+    @notification.destroy
   end
 
   private
