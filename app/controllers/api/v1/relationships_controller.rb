@@ -27,8 +27,9 @@ class Api::V1::RelationshipsController < ApplicationController
     @relationship = Relationship.find_by(mentor_id: relationship_params[:mentor_id], mentee_id: relationship_params[:mentee_id])
     @relationship.update(accepted: relationship_params[:accepted])
     if @relationship.valid?
-      @notification = Notification.find_by(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentor_id], text: "mentorship request")
-      @notification.destroy
+      @request_notification = Notification.find_by(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentor_id], text: "mentorship request")
+      @request_notification.destroy
+      @accept_notification = Notification.create(sender_id: relationship_params[:mentor_id], recipient_id: relationship_params[:mentee_id], text: "mentorship accepted")
       render json: { relationship: RelationshipSerializer.update(@relationship) }, status: :patched
     else
       render json: { error: 'failed to update relationship' }, status: :not_acceptable
