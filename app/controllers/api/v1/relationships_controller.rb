@@ -10,8 +10,8 @@ class Api::V1::RelationshipsController < ApplicationController
   def create
     @relationship = Relationship.create(relationship_params)
     # @notification = Notification.create(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentee_id], text: "sent mentorship request")
-    @notification = Notification.create(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentor_id], text: "mentorship request")
     if @relationship.valid?
+      @notification = Notification.create(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentor_id], text: "mentorship request")
       # serialized_data = ActiveModelSerializers::Adapter::Json.new(
       #   RelationshipSerializer.new(@relationship)
       # ).serializable_hash
@@ -24,10 +24,10 @@ class Api::V1::RelationshipsController < ApplicationController
   end
 
   def update
-    byebug
     @relationship = Relationship.find_by(mentor_id: relationship_params[:mentor_id], mentee_id: relationship_params[:mentee_id])
     @relationship.update(accepted: relationship_params[:accepted])
     if @relationship.valid?
+      @notification = Notification.find_by(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentor_id], text: "mentorship request").destroy
       render json: { relationship: RelationshipSerializer.update(@relationship) }, status: :patched
     else
       render json: { error: 'failed to update relationship' }, status: :not_acceptable

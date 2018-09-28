@@ -13,11 +13,15 @@ class User < ApplicationRecord
   has_many :passive_relationships, -> { where(accepted: true) }, class_name:  "Relationship",
                                 foreign_key: "mentor_id",
                                 dependent:   :destroy
-  has_many :mentors, through: :active_relationships
-  has_many :mentees, through: :passive_relationships
+  has_many :mentors, through: :active_relationships,
+                                dependent:   :destroy
+  has_many :mentees, through: :passive_relationships,
+                                dependent:   :destroy
 
-  has_many :messages, through: :active_relationships
-  has_many :messages, through: :passive_relationships
+  has_many :messages, through: :active_relationships,
+                                dependent:   :destroy
+  has_many :messages, through: :passive_relationships,
+                                dependent:   :destroy
 
   has_many :received_notifications, class_name:  "Notification",
                                 foreign_key: "recipient_id",
