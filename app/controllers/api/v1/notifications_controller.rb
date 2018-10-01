@@ -1,9 +1,9 @@
-class NotificationsController < ApplicationController
+class Api::V1::NotificationsController < ApplicationController
   skip_before_action :authorized, only: [:create]
 
   def create
-    @notification = Notification.create(notification_params)
-    if @notification.valid?
+    @notification = Notification.new(notification_params)
+    if @notification.save
       serialized_data = ActiveModelSerializers::Adapter::Json.new(
         NotificationSerializer.new(@notification)
       ).serializable_hash

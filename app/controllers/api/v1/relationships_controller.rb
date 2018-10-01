@@ -12,6 +12,10 @@ class Api::V1::RelationshipsController < ApplicationController
     # @notification = Notification.create(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentee_id], text: "sent mentorship request")
     if @relationship.valid?
       @notification = Notification.create(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentor_id], text: "mentorship request")
+      serialized_data = ActiveModelSerializers::Adapter::Json.new(
+        NotificationSerializer.new(@notification)
+      ).serializable_hash
+      ActionCable.server.broadcast 'notifications_channel', serialized_data
       # serialized_data = ActiveModelSerializers::Adapter::Json.new(
       #   RelationshipSerializer.new(@relationship)
       # ).serializable_hash
@@ -30,7 +34,11 @@ class Api::V1::RelationshipsController < ApplicationController
       @request_notification = Notification.find_by(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentor_id], text: "mentorship request")
       @request_notification.destroy
       @accept_notification = Notification.create(sender_id: relationship_params[:mentor_id], recipient_id: relationship_params[:mentee_id], text: "mentorship accepted")
-      render json: { relationship: RelationshipSerializer.update(@relationship) }, status: :patched
+      serialized_data = ActiveModelSerializers::Adapter::Json.new(
+        NotificationSerializer.new(@accept_notification)
+      ).serializable_hash
+      ActionCable.server.broadcast 'notifications_channel', serialized_data
+      render json: @relationship, status: :accepted
     else
       render json: { error: 'failed to update relationship' }, status: :not_acceptable
     end
