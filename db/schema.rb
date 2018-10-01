@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2018_09_27_222109) do
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recipient_id", "sender_id"], name: "index_notifications_on_recipient_id_and_sender_id", unique: true
     t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
@@ -62,7 +61,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_222109) do
     t.string "last_name"
     t.string "profile_pic", default: ""
     t.string "job_title", default: ""
-    t.string "expertise", default: ""
+    t.string "expertiseArray", default: ""
     t.string "bio", default: ""
     t.string "linkedin", default: ""
     t.string "github", default: ""

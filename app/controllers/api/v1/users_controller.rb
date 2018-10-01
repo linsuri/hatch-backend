@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: [:index, :create]
+  skip_before_action :authorized, only: [:index, :create, :update]
 
   def index
     @users = User.all
@@ -20,8 +20,19 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find_by(id: user_params[:id])
+    @user.update(user_params)
+    
+    if @user.valid?
+      render json: @user, status: :patched
+    else
+      render json: { error: 'failed to update user' }, status: :not_acceptable
+    end
+  end
+
   private
   def user_params
-    params.require(:user).permit(:email_address, :password, :first_name, :last_name)
+    params.require(:user).permit(:id, :email_address, :password, :first_name, :last_name, :profile_pic, :job_title, :expertiseArray, :bio, :linkedin, :github, :personal_website, :mentor_status, :will_buy_coffee)
   end
 end

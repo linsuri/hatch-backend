@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :last_name
       t.string :profile_pic, :default => ''
       t.string :job_title, :default => ''
-      t.string :expertise, :default => ''
+      t.string :expertiseArray, :default => ''
       t.string :bio, :default => ''
       t.string :linkedin, :default => ''
       t.string :github, :default => ''
