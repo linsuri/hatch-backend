@@ -21,11 +21,12 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
+    # byebug
     @user = User.find_by(id: user_params[:id])
     @user.update(user_params)
-    
+
     if @user.valid?
-      render json: @user, status: :patched
+      render json: @user, status: :accepted
     else
       render json: { error: 'failed to update user' }, status: :not_acceptable
     end
