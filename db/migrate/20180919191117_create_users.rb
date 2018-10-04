@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :password_digest
       t.string :first_name
       t.string :last_name
-      t.string :profile_pic, :default => ''
+      t.string :profile_pic, :default => 'https://soulcore.com/wp-content/uploads/2018/01/profile-placeholder.png'
       t.string :job_title, :default => ''
       t.string :expertiseArray, :default => ''
       t.string :bio, :default => ''
