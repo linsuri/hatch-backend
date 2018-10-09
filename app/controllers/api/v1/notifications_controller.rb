@@ -1,5 +1,5 @@
 class Api::V1::NotificationsController < ApplicationController
-  skip_before_action :authorized, only: [:create]
+  skip_before_action :authorized, only: [:create, :update]
 
   def create
     @notification = Notification.new(notification_params)
@@ -12,9 +12,19 @@ class Api::V1::NotificationsController < ApplicationController
     end
   end
 
+  def update
+    @notifications = Notification.where(recipient_id: notification_params[:recipient_id])
+    @notifications.map{ |notification| notification.update(opened: notification_params[:opened]) }
+    if @notifications.map{ |notification| notification.valid? }
+      render json: { message: 'updated notifications' }, status: :accepted
+    else
+      render json: { error: 'failed to update notifications' }, status: :not_acceptable
+    end
+  end
+
   private
   def notification_params
-    params.require(:notification).permit(:sender_id, :recipient_id, :text)
+    params.require(:notification).permit(:id, :sender_id, :recipient_id, :text, :opened)
   end
 
 end

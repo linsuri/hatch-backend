@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_222109) do
     t.integer "recipient_id"
     t.integer "sender_id"
     t.string "text"
+    t.boolean "opened", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
