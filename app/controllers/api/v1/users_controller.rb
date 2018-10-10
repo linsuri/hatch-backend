@@ -23,7 +23,6 @@ class Api::V1::UsersController < ApplicationController
   def update
     @user = User.find_by(id: user_params[:id])
     @user.update(user_params)
-
     if @user.valid?
       render json: @user, status: :accepted
     else

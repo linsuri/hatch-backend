@@ -40,7 +40,6 @@ class Api::V1::RelationshipsController < ApplicationController
 
   def destroy
     @relationship = Relationship.find_by(mentor_id: relationship_params[:mentor_id], mentee_id: relationship_params[:mentee_id])
-    byebug
     @notification = Notification.find_by(sender_id: relationship_params[:mentee_id], recipient_id: relationship_params[:mentor_id], text: "mentorship request")
     @relationship.destroy
     @notification.destroy
