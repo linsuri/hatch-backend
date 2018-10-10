@@ -29,6 +29,4 @@ class User < ApplicationRecord
   has_many :sent_notifications, class_name:  "Notification",
                                 foreign_key: "sender_id",
                                 dependent:   :destroy
-  # has_many :recipients, through: :received_notifications
-  # has_many :senders, through: :sent_notifications
 end

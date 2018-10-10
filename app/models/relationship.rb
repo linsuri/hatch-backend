@@ -5,12 +5,4 @@ class Relationship < ApplicationRecord
                                 dependent:   :destroy
   validates :mentee_id, presence: true
   validates :mentor_id, presence: true
-
-  # def decline
-  #   self.destroy
-  # end
-  #
-  # def accept
-  #   self.update accepted: true
-  # end
 end

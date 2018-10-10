@@ -18,8 +18,6 @@ class UserSerializer < ActiveModel::Serializer
   has_many :sent_notifications, class_name:  "Notification",
                                 foreign_key: "sender_id",
                                 dependent:   :destroy
-  # has_many :recipients, through: :received_notifications
-  # has_many :senders, through: :sent_notifications
 
   attributes :id, :email_address, :mentor_status, :first_name, :last_name, :profile_pic, :job_title, :expertiseArray, :bio, :linkedin, :github, :personal_website, :will_buy_coffee
 end
