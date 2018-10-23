@@ -87,5 +87,5 @@ Rails.application.configure do
 
   config.action_cable.url = "wss://hatch-backend.herokuapp.com/cable"
 
-  config.action_cable.allowed_request_origins = ['https://hatch-backend.herokuapp.com', 'http://hatch-backend.herokuapp.com']
+  config.action_cable.allowed_request_origins = ['https://app-hatch.herokuapp.com', 'http://app-hatch.herokuapp.com']
 end
