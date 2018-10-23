@@ -16,7 +16,17 @@ class Api::V1::UsersController < ApplicationController
       @token = encode_token(user_id: @user.id)
       render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
     else
-      render json: { error: 'failed to create user' }, status: :not_acceptable
+      if params[:user][:email_address] == ''
+        render json: { errors: 'Email address field must not be blank' }, status: :not_acceptable
+      elsif params[:user][:password] == ''
+        render json: {errors: "Password field must not be blank"}, status: :not_acceptable
+      elsif params[:user][:first_name] == ''
+        render json: {errors: "First name field must not be blank"}, status: :not_acceptable
+      elsif params[:user][:last_name] == ''
+        render json: {errors: "Last Name field must not be blank"}, status: :not_acceptable
+      else
+        render json: {errors: "This email address has already been used to create an account"}, status: :not_acceptable
+      end
     end
   end
 
